@@ -1,0 +1,19 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home - Bot Notifier</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p>This is the home page of Bot Notifier.</p>
+    <a href="{% url 'logout' %}">Logout</a>
+  </body>
+</html>

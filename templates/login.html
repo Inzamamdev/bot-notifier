@@ -1,0 +1,30 @@
+<!-- templates/login.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login - Bot Notifier</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+      form {
+        display: inline-block;
+        text-align: left;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Login to Bot Notifier</h2>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }} {% if form.errors %}
+      <p class="error">Invalid username or password.</p>
+      {% endif %}
+      <button type="submit">Login</button>
+    </form>
+  </body>
+</html>
