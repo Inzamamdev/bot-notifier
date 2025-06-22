@@ -221,9 +221,7 @@ curl -X POST -d "refresh=your-jwt-refresh-token" http://localhost:8000/api/token
 {
     "access": "new-jwt-access-token"
 }
-```
 
-```
 
 
 
