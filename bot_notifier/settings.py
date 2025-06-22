@@ -44,6 +44,7 @@ INSTALLED_APPS = [
       'rest_framework_simplejwt',
       'apis',
       'userauth',
+      'telegram_bot'
 ]
 
 MIDDLEWARE = [
@@ -149,3 +150,5 @@ EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
