@@ -2,15 +2,11 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Item
-from .serializers import ItemSerializer
 
 class PublicView(APIView):
     permission_classes = [AllowAny]
     def get(self, request):
-        items = Item.objects.all()
-        serializer = ItemSerializer(items, many=True)
-        return Response(serializer.data)
+        return Response({"message": "This is a public endpoint!"})
 
 class ProtectedView(APIView):
     permission_classes = [IsAuthenticated]
