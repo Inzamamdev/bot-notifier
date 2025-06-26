@@ -1,13 +1,21 @@
 from telegram.ext import Application, CommandHandler
 from django.conf import settings
 from .models import TelegramUser
-from asgiref.sync import sync_to_async
+from django.core.exceptions import ObjectDoesNotExist
 
 async def start(update, context):
     username = update.message.from_user.username
     if username:
-        await sync_to_async(TelegramUser.objects.get_or_create)(username=username)
-        await update.message.reply_text(f"Welcome, {username}! Your username has been saved.")
+        try:
+            await TelegramUser.objects.aget(username=username)
+            created = False
+        except ObjectDoesNotExist:
+            await TelegramUser.objects.acreate(username=username)
+            created = True
+
+        await update.message.reply_text(
+            f"Welcome, {username}! Your username has {'been saved' if created else 'already been saved.'}"
+        )
     else:
         await update.message.reply_text("Please set a Telegram username in your profile and try again.")
 
